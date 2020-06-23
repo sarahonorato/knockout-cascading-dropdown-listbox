@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="container-fluid" id="main-container">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label>Genre</label>
+                <select id="genreList" class="form-control" data-bind="options: genreOptions,
+                                                                                optionsCaption: 'Select genre...',
+                                                                                optionsValue: function(item) { return item; },
+                                                                                optionsText: function(item) { return item; },
+                                                                                value: genreSelected,
+                                                                                valueUpdate: 'change'"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <select id="moviesAvailable" class="form-control" option multiple style="height: 150px"
+                        data-bind="options: movieListByGenre,
+                                    optionsValue: function(item) { return item.id; },
+                                    optionsText: function(item) { return item.title; },
+                                    valueUpdate: 'change'"></select>
+            </div>
+            <div class="col-md-1 form-group" style="height: 150px">
+                <input type="button" id="addMovie" value=">" class="btn btn-primary btn-sm" style="margin-left: 40%; margin-top: 10%;" data-bind="click: $root.addMovie">
+                <input type="button" id="removeMovie" value="<" class="btn btn-primary btn-sm" style="margin-left: 40%; margin-top: 10%;" data-bind="click: $root.removeMovie">
+            </div>
+            <div class="col-md-4 form-group">
+                <select class="form-control" option multiple id="moviesSelected" style="height: 150px"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 form-group">
+                <input id="btnSubmitMovies" type="button" class="btn btn-primary" value="See Selected Movies" />
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts{
+    <script src="~/js/custom/movieViewModel.js"></script>
+    <script type="text/javascript">
+        var movieViewModel = new MovieViewModel();
+        var bodyNode = $("div#main-container")[0];
+        ko.applyBindings(movieViewModel, bodyNode);
+    </script>
+}

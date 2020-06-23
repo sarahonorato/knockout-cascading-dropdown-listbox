@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "knockout@3.5.1",
+      "destination": "wwwroot/js/knockout/",
+      "files": [
+        "knockout-latest.js",
+        "knockout-latest.min.js",
+        "knockout-latest.min.js.map"
+      ]
+    },
+    {
+      "library": "knockout.mapping@2.4.1",
+      "destination": "wwwroot/js/knockout/"
+    }
+  ]
+}
